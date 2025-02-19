@@ -41,10 +41,12 @@
     </resource>
     <resource methods="GET" uri-template="/GetProposal/{ProposalID}">
         <inSequence>
+            <property name="ProposalID" expression="get-property('uri.var.ProposalID')"></property>
+            <property expression="concat('http://adriano.local:8290/services/HondaDemoDataServices/proposalById/', get-property('uri.var.ProposalID'))" name="uri.var.newUrl" scope="default" type="STRING"/>
             <call>
-                <endpoint key="GetProposalByID"/>
-                <source type="body"/>
-                <target type="body"/>
+                <endpoint>
+                    <http method="get" uri-template="{uri.var.newUrl}"/>
+                </endpoint>
             </call>
             <respond/>
         </inSequence>
