@@ -6,7 +6,7 @@ info:
 servers:
 - url: http://localhost:8290/proposal
 paths:
-  /:
+  /CreateProposal:
     post:
       requestBody:
         description: Sample Payload
@@ -18,6 +18,22 @@ paths:
                 payload:
                   type: object
         required: false
+      responses:
+        default:
+          description: Default response
+  /GetProposalList:
+    get:
+      responses:
+        default:
+          description: Default response
+  /GetProposal/{ProposalID}:
+    get:
+      parameters:
+      - name: ProposalID
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         default:
           description: Default response

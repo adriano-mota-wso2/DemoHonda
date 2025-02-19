@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <api context="/proposal" name="Proposal" xmlns="http://ws.apache.org/ns/synapse">
-    <resource methods="POST" uri-template="/">
+    <resource methods="POST" uri-template="/CreateProposal">
         <inSequence>
             <property name="ContentType" value="application/json" scope="axis2"/>
             <property name="messageType" value="application/json" scope="axis2"/>
@@ -13,6 +13,11 @@
                 <property name="Received Proposal Description" expression="$ctx:ProposalDescription"/>
                 <property name="Received Proposal Date" expression="$ctx:ProposalDate"/>
             </log>
+            <call>
+                <endpoint key="CreateProposal"/>
+                <source type="body"/>
+                <target type="body"/>
+            </call>
             <respond/>
         </inSequence>
         <faultSequence>
@@ -20,4 +25,29 @@
             <respond/>
         </faultSequence>
     </resource>
-</api>
+    <resource methods="GET" uri-template="/GetProposalList">
+        <inSequence>
+            <call>
+                <endpoint key="GetProposals"/>
+                <source type="body"/>
+                <target type="body"/>
+            </call>
+            <respond/>
+        </inSequence>
+        <faultSequence>
+            <log level="full"/>
+            <respond/>
+        </faultSequence>
+    </resource>
+    <resource methods="GET" uri-template="/GetProposal/{ProposalID}">
+        <inSequence>
+            <call>
+                <endpoint key="GetProposalByID"/>
+                <source type="body"/>
+                <target type="body"/>
+            </call>
+            <respond/>
+        </inSequence>
+        <faultSequence>
+        </faultSequence>
+    </resource></api>
