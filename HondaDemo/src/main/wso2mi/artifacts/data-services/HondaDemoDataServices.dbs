@@ -99,4 +99,7 @@
             <with-param name="ProposalID" query-param="ProposalID"/>
         </call-query>
     </resource>
+    <query id="get_xxxx_query" useConfig="HondaDemoDataSource">
+        <sql></sql>
+    </query>
 </data>
