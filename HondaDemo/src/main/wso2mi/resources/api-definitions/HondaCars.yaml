@@ -1,0 +1,13 @@
+openapi: 3.0.1
+info:
+  title: HondaCars
+  description: API Definition of HondaCars
+  version: 1.0.0
+servers:
+- url: http://localhost:8290/hondacars
+paths:
+  /list:
+    get:
+      responses:
+        default:
+          description: Default response

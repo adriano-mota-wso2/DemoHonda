@@ -1,0 +1,13 @@
+openapi: 3.0.1
+info:
+  title: HondaMotorcycles
+  description: API Definition of HondaMotorcycles
+  version: 1.0.0
+servers:
+- url: http://localhost:8290/hondamotorcycles
+paths:
+  /list:
+    get:
+      responses:
+        default:
+          description: Default response
